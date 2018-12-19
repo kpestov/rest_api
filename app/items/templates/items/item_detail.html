@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ item.title }}
+{% endblock %}
+
+{% block content_title %}
+    {{ item.title }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="tags">
+        {% for tag in tags %}
+            <a href="{{ url_for('items.tag_detail', slug=tag.slug) }}"><button type="button" class="btn btn-primary">Primary</button></a>
+        {% endfor %}
+    </div>
+
+    <div class="main-content">
+        {{ item.body }}
+    </div>
+{% endblock %}
