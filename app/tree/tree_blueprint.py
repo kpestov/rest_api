@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import render_template
 from models import TreeNode
-from .forms import Itemform
+from .forms import ItemForm
 from flask import request
 from app import db
 from flask import redirect, url_for
@@ -13,21 +13,40 @@ tree = Blueprint('tree', __name__, template_folder='templates')
 @tree.route('/create', methods=['POST', 'GET'])
 def create_item():
 
+    parent_node = TreeNode.query.filter(TreeNode.parent_id == 1).first()
+
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
 
         try:
-            item = Item(title=title, body=body)
+            item = TreeNode(name=title, parent=parent_node, body=body)
             db.session.add(item)
             db.session.commit()
         except:
             print('Something wrong')
 
-        return redirect(url_for('items.index'))
+        return redirect(url_for('tree.index'))
 
-    form = Itemform()
-    return render_template('items/create_item.html', form=form)
+    form = ItemForm()
+    return render_template('tree/create_item.html', form=form)
+
+
+@tree.route('/<slug>/edit/', methods=['POST', 'GET'])
+def edit_item(slug):
+    element = TreeNode.query.filter(TreeNode.slug == slug).first()
+
+    if request.method == 'POST':
+        form = ItemForm(formdata=request.form, obj=element)
+        # tree.name = request.form['title']
+        # tree.name = request.form['body']
+        form.populate_obj(element)
+        db.session.commit()
+
+        return redirect(url_for('tree.subnode_detail', slug=element.slug))
+
+    form = ItemForm(obj=element)
+    return render_template('tree/edit_item.html', element=element, form=form)
 
 
 @tree.route('/')

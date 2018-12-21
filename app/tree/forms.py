@@ -1,6 +1,6 @@
 from wtforms import Form, StringField, TextAreaField
 
 
-class Itemform(Form):
-    title = StringField('Title')
+class ItemForm(Form):
+    name = StringField('Title')
     body = TextAreaField('Body')

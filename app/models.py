@@ -30,9 +30,10 @@ class TreeNode(db.Model):
         collection_class=attribute_mapped_collection('name')
     )
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, parent=None, *args, **kwargs):
         super(TreeNode, self).__init__(*args, **kwargs)
         self.generate_slug()
+        self.parent = parent
 
 
     def generate_slug(self):
