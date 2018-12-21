@@ -3,6 +3,7 @@ from flask import render_template
 from models import Item, Tag
 
 
+
 items = Blueprint('items', __name__, template_folder='templates')
 
 

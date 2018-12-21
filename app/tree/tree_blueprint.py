@@ -1,10 +1,33 @@
 from flask import Blueprint
 from flask import render_template
 from models import TreeNode
+from .forms import Itemform
 from flask import request
+from app import db
+from flask import redirect, url_for
 
 
 tree = Blueprint('tree', __name__, template_folder='templates')
+
+
+@tree.route('/create', methods=['POST', 'GET'])
+def create_item():
+
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+
+        try:
+            item = Item(title=title, body=body)
+            db.session.add(item)
+            db.session.commit()
+        except:
+            print('Something wrong')
+
+        return redirect(url_for('items.index'))
+
+    form = Itemform()
+    return render_template('items/create_item.html', form=form)
 
 
 @tree.route('/')

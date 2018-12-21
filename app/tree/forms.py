@@ -2,5 +2,5 @@ from wtforms import Form, StringField, TextAreaField
 
 
 class Itemform(Form):
-    title = StringField('Name')
-    body = TextAreaField('Description')
+    title = StringField('Title')
+    body = TextAreaField('Body')
