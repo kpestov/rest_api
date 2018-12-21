@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    {% block head %}
+
     <meta charset="UTF-8">
     <title>
 
@@ -9,6 +12,8 @@
 
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    {% endblock %}
 </head>
 <body>
 
@@ -23,8 +28,8 @@
           <li class="nav-item active">
             <a class="nav-link" href="{{ url_for ('items.index') }}">Classifier<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for ('tree.index') }}">Tree<span class="sr-only">(current)</span></a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

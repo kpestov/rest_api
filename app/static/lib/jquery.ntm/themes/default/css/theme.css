@@ -1,0 +1,24 @@
+
+.tree-menu ul { list-style: none; }
+
+.tree-menu > ul { padding: 0; }
+
+.tree-menu span {
+  display: block;
+  vertical-align: middle;
+  text-decoration: none;
+  padding: 6px;
+  color: #002888;
+}
+
+
+.tree-menu .closed > span,
+.tree-menu .opened > span {
+  padding-left: 24px;
+  background-position: 4px 8px;
+  background-repeat: no-repeat;
+}
+
+.tree-menu .closed > span { background-image: url(../img/icon-expand.gif); }
+
+.tree-menu .opened > span { background-image: url(../img/icon-collapse.gif); }

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Tree index page
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/lib/jquery.ntm/js/jquery.ntm.js"></script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../static/lib/jquery.ntm/themes/default/css/theme.css"/>
+    <<script type="text/javascript">
+        $(document).ready(function() {
+            $('.demo').ntm();
+        });
+     </script>
+
+{% endblock %}
+
+{% block content_title %}
+    Tree structure
+{% endblock %}
+
+{% block content %}
+
+  <div class="wrapper">
+    <div class="tree-menu demo" id="tree-menu">
+        <ul>
+            <li><span> {{ root.name }} </span>
+                <ul>
+                  <li><span>{{ root_child.name }}</span>
+
+                    <ul>
+
+                     {% for subnode in subnodes %}
+
+                       <li><a href="{{ url_for('tree.subnode_detail', slug=subnode.slug) }}"> {{ subnode.name }} </a></li>
+
+                     {% endfor %}
+
+                    </ul>
+
+				  </li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+  </div>
+
+{% endblock %}
