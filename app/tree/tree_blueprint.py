@@ -16,7 +16,7 @@ def create_item():
     parent_node = TreeNode.query.filter(TreeNode.parent_id == 1).first()
 
     if request.method == 'POST':
-        title = request.form['title']
+        title = request.form['name']
         body = request.form['body']
 
         try:
