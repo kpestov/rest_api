@@ -12,4 +12,3 @@ db.session.add(node)
 db.session.commit()
 
 print(node.dump())
-print(subnode.slug)

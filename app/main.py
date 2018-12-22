@@ -4,8 +4,6 @@ from tree.tree_blueprint import tree
 from app import db
 
 
-
-
 app.register_blueprint(tree, url_prefix='/tree')
 
 

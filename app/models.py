@@ -1,4 +1,3 @@
-from app import *
 import re
 from sqlalchemy.orm.collections import attribute_mapped_collection
 
