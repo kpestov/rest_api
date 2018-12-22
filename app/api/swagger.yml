@@ -1,0 +1,42 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with server code
+  version: "1.0.0"
+  title: Hierarchical Structure
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /elements:
+    get:
+      operationId: business.get_all_elements
+      tags:
+        - Elements
+      summary: Read the entire list of elements
+      description: Read the list of elements
+      parameters:
+        - name: length
+          in: query
+          type: integer
+          description: Number of elements to get from elements
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering elements
+          required: false
+      responses:
+        200:
+          description: Successfully read elements list operation
+          schema:
+            type: array
+            items:
+              properties:
+                name:
+                  type: string
+

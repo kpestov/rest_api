@@ -38,8 +38,6 @@ def edit_item(slug):
 
     if request.method == 'POST':
         form = ItemForm(formdata=request.form, obj=element)
-        # tree.name = request.form['title']
-        # tree.name = request.form['body']
         form.populate_obj(element)
         db.session.commit()
 
