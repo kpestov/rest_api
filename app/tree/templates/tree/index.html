@@ -31,20 +31,13 @@
             <li><span> {{ root.name }} </span>
                 <ul>
                   <li><span>{{ root_child.name }}</span>
-
                     <ul>
-
                      {% for subnode in subnodes %}
-
                        <li><a href="{{ url_for('tree.subnode_detail', slug=subnode.slug) }}"> {{ subnode.name }} </a></li>
-
                      {% endfor %}
-
                     </ul>
-
-				  </li>
+		 </li>
                 </ul>
-
             </li>
         </ul>
     </div>
