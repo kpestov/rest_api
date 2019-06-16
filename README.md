@@ -1,5 +1,5 @@
 # rest_api
-Fisrst attemption to understand how Flask works and write REST API with description of documention using swagger
+First attemption to understand how Flask works and write REST API with description of documention using swagger
 
 # What I Learned
 - Flask core
